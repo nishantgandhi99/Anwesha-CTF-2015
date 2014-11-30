@@ -1,0 +1,6 @@
+CREATE PROCEDURE sp_insertuser(IN name_prm varchar(50),IN id_prm varchar(10),IN clg_prm varchar(50),IN email_prm varchar(20),IN ph_prm varchar(15))
+BEGIN
+INSERT INTO userinfo(Name,Id,clg,email,ph_no) VALUES(name_prm,id_prm,clg_prm,email_prm,ph_prm);
+END$$
+
+

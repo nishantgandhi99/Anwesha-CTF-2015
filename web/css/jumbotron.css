@@ -1,0 +1,46 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+p.greentext
+{
+   color:green;
+   font-family:  sans-serif;
+   font: bold;
+}
+
+h1.greentext
+{
+color:green;
+   font-family:  sans-serif;
+   font: bold;
+  
+}
+h2.greentext
+{
+color:green;
+   font-family:  sans-serif;
+   font: bold;
+
+}
+td.greentext1
+{
+    font-family:  sans-serif;
+   font: bold;
+   color:  green;
+   font-size: 16pt;
+   padding-bottom: 5px;
+   padding-top: 5px;
+   padding-left: 30px;
+   padding-right: 30px;
+}
+body.mb
+{
+    background-image:url(./Images/mbsmall.jpg);
+
+   background-repeat:no-repeat;
+
+   background-size:cover;
+}

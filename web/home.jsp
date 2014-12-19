@@ -111,7 +111,7 @@
             <ul class="nav">
               <li ><a href="index.html">Welcome Page</a></li>
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="http://2014.anwesha.info" target="_blank">Anwesha 2015</a></li>
+              <li><a href="http://2014.anwesha.info" target="_blank">Anwesha 2014</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

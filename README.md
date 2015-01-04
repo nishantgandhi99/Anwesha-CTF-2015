@@ -1,5 +1,7 @@
 CTF15
 =====
+In this era of digital world, there is one dark community rising with most intelligent individuals. Law maker call them criminals but normal people call them Hackers. If you are part of this community then this event is for you. Capture the flag is hacking challenge where you can prove your hacking skills. This challenge will test your understanding of web applications & operating systems.
+
 CTF15 has two rounds.
 ---------------------
 1) Online Qulification Round

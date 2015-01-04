@@ -9,8 +9,42 @@ CTF15 has two rounds.
 Team CTF:
 ========
 
-Frontend Team 
--------------
+Frontend Team Lead
+------------------
+Soumya Sarkar
 
-Backend Team
+Rishita
+
+Manvee
+
+Backend Team Lead
+-----------------
+Amar Sharma
+
+Nishant Gandhi
+
+Vartika Tewari
+
+Posters Lead
 ------------
+Kuntal Das
+
+General Contributors
+--------------------
+Gagan Kumar
+
+Abhishek Jaiswal
+
+Apoorva Shrivastava
+
+Shailesh Kumar Kashyap
+
+Ankit Choudhary
+
+Rishabh Goel
+
+Shifona Garg
+
+Ankit Tripathi
+
+Bhawana Pushkar 

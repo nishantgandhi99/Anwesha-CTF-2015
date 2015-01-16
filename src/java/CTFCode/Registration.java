@@ -44,18 +44,20 @@ public class Registration extends HttpServlet {
         PrintWriter out = response.getWriter();
         Class.forName("com.mysql.jdbc.Driver");
         Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/anwesha_ctf15", "ctf", "");
-        String uid = request.getParameter("Aid");
-        String pass = request.getParameter("Passwd");
-        String name = request.getParameter("Name");
-        String clg = request.getParameter("clg");
+        String tname = request.getParameter("tname");
+        String pass = request.getParameter("pass");
+        String aid1 = request.getParameter("aid1");
+        String aid2 = request.getParameter("aid2");
+        String aid3 = request.getParameter("aid3");
+        String phone = request.getParameter("phone");
+        String clg = request.getParameter("college");
         String email = request.getParameter("email");
-        String phno = request.getParameter("contact");
 
-        PreparedStatement ps = cn.prepareCall("select Id from auth where Id=?");
-        ps.setString(1, uid);
+        PreparedStatement ps = cn.prepareCall("select tname from user_info where tname=?");
+        ps.setString(1, tname);
         ResultSet rs = ps.executeQuery();
         out.write("query executed");
-        if (rs.first()) {
+        /*if (rs.first()) {
             response.sendRedirect("register.jsp?prob=idExist");
         } else {
             out.write("duplicate entry");
@@ -66,7 +68,7 @@ public class Registration extends HttpServlet {
 
         if (uid.isEmpty() || pass.isEmpty() || name.isEmpty() || clg.isEmpty() || email.isEmpty() || phno.isEmpty()) {
             response.sendRedirect("register.jsp?prob=incomplete");
-        }
+        }*/
         String plaintext = pass;
         MessageDigest m = MessageDigest.getInstance("MD5");
         m.reset();
@@ -79,21 +81,23 @@ public class Registration extends HttpServlet {
             hashtext = "0" + hashtext;
         }
 
-        PreparedStatement prst = cn.prepareCall("insert into userinfo values(?,?,?,?,?)");
-        prst.setString(1, name);
-        prst.setString(2, uid);
-        prst.setString(3, clg);
-        prst.setString(4, email);
-        prst.setString(5, phno);
+        PreparedStatement prst = cn.prepareCall("insert into user_info values(?,?,?,?,?,?,?)");
+        prst.setString(1, tname);
+        prst.setString(2, aid1);
+        prst.setString(3, aid2);
+        prst.setString(4, aid3);
+        prst.setString(5, phone);
+        prst.setString(6, clg);
+        prst.setString(7, email);
         prst.execute();
         prst.close();
-        PreparedStatement Auth = cn.prepareCall("insert into auth values(?,?)");
-        Auth.setString(1, uid);
+        PreparedStatement Auth = cn.prepareCall("insert into login values(?,?)");
+        Auth.setString(1, tname);
         Auth.setString(2, hashtext);
         Auth.execute();
         Auth.close();
-        PreparedStatement problem = cn.prepareCall("insert into problems values(?,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)");
-        problem.setString(1, uid);
+        PreparedStatement problem = cn.prepareCall("insert into user_track values(?,0,0,0,0,0,0,0,0,0,0)");
+        problem.setString(1, tname);
         problem.execute();
         problem.close();
         cn.close();

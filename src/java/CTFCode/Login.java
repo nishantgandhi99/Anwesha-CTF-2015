@@ -53,6 +53,7 @@ public class Login extends HttpServlet {
         if (!(request.getParameter("user") == null || request.getParameter("pass") == null)) {
             uname = request.getParameter("user");
             pass = request.getParameter("pass");
+            System.out.println(uname+pass);
 
         } else {
             response.sendRedirect("index.html");
@@ -72,7 +73,7 @@ public class Login extends HttpServlet {
 
         Class.forName("com.mysql.jdbc.Driver");
         Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/anwesha_ctf15", "ctf", "");
-        PreparedStatement ps = cn.prepareCall("select Id,Pass from auth where Id=? and Pass=?");
+        PreparedStatement ps = cn.prepareCall("select tname,pass from login where tname=? and pass=?");
         ps.setString(1, uname);
         ps.setString(2, hashtext);
         ResultSet rs = ps.executeQuery();

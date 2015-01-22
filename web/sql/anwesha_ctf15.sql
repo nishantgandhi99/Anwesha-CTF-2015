@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2015 at 03:44 PM
+-- Generation Time: Jan 22, 2015 at 10:53 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -12,7 +12,6 @@ SET time_zone = "+00:00";
 CREATE USER 'ctf'@'localhost'; GRANT SELECT, INSERT, UPDATE, DELETE ON *.* TO 'ctf'@'localhost';
 CREATE DATABASE IF NOT EXISTS anwesha_ctf15;
 USE anwesha_ctf15;
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -42,8 +41,16 @@ CREATE TABLE IF NOT EXISTS `login` (
 CREATE TABLE IF NOT EXISTS `problem_info` (
 `pid` int(20) NOT NULL,
   `score` int(10) NOT NULL,
-  `answer` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `answer` varchar(50) NOT NULL,
+  `page` varchar(30) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `problem_info`
+--
+
+INSERT INTO `problem_info` (`pid`, `score`, `answer`, `page`) VALUES
+(1, 20, 'anything', 'juststarted.jsp');
 
 -- --------------------------------------------------------
 
@@ -130,7 +137,7 @@ ALTER TABLE `user_track`
 -- AUTO_INCREMENT for table `problem_info`
 --
 ALTER TABLE `problem_info`
-MODIFY `pid` int(20) NOT NULL AUTO_INCREMENT;
+MODIFY `pid` int(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --

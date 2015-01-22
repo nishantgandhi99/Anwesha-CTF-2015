@@ -47,13 +47,11 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        String uname = null;
+        String tname = null;
         String pass = null;
-
-        if (!(request.getParameter("user") == null || request.getParameter("pass") == null)) {
-            uname = request.getParameter("user");
+        if (!(request.getParameter("tname") == null || request.getParameter("pass") == null)) {
+            tname = request.getParameter("tname");
             pass = request.getParameter("pass");
-            System.out.println(uname+pass);
 
         } else {
             response.sendRedirect("index.html");
@@ -74,36 +72,29 @@ public class Login extends HttpServlet {
         Class.forName("com.mysql.jdbc.Driver");
         Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/anwesha_ctf15", "ctf", "");
         PreparedStatement ps = cn.prepareCall("select tname,pass from login where tname=? and pass=?");
-        ps.setString(1, uname);
+        ps.setString(1, tname);
         ps.setString(2, hashtext);
         ResultSet rs = ps.executeQuery();
         int problemstotal;
-        out.print(rs.isBeforeFirst());
+        //out.print(rs.isBeforeFirst());
 
         if (rs.first()) {
 
             HttpSession ses = request.getSession(true);
-            ses.setAttribute("uname", rs.getString(1));
-
-            PreparedStatement total = cn.prepareCall("select total from problems where Id=?");
-            total.setString(1, uname);
-            ResultSet rstotal = total.executeQuery();
-            rstotal.first();
-            ses.setAttribute("score", rstotal.getInt("total"));
-            total = cn.prepareCall("select * from problems where Id=?");
-            total.setString(1, uname);
+            ses.setAttribute("tname", rs.getString(1));
+            PreparedStatement total;
+            ResultSet rstotal;
+            total = cn.prepareCall("select * from user_track where tname=?"); // Getting crrently solved questions
+            total.setString(1, tname);
             rstotal = total.executeQuery();
             rstotal.first();
-
-            problemstotal = rstotal.getInt("p1") + rstotal.getInt("p2") + rstotal.getInt("p3") + rstotal.getInt("p4") + rstotal.getInt("p5") + rstotal.getInt("p6") + rstotal.getInt("p7") + rstotal.getInt("p8") + rstotal.getInt("p9") + rstotal.getInt("p10") + rstotal.getInt("p11") + rstotal.getInt("p12") + rstotal.getInt("p13") + rstotal.getInt("p14") + rstotal.getInt("p15");
-
-            ses.setAttribute("total", String.valueOf(problemstotal));
-
-            response.sendRedirect("home.jsp");
+            int score = 0;
+            for (int i = 2; i <= 11; i++) {
+                score += rstotal.getInt(i);
+            }
+            ses.setAttribute("score", String.valueOf(score));
+            response.sendRedirect("dashboard.jsp?q=1");
         } else {
- //     RequestDispatcher rd = request.getRequestDispatcher("studentdetail.jsp?login=nologin");
-            // rd.forward(request, response);
-            // request.sendRedirect("");
             response.sendRedirect("index.html");
         }
 

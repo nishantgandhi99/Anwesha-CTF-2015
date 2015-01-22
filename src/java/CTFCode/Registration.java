@@ -58,17 +58,17 @@ public class Registration extends HttpServlet {
         ResultSet rs = ps.executeQuery();
         out.write("query executed");
         /*if (rs.first()) {
-            response.sendRedirect("register.jsp?prob=idExist");
-        } else {
-            out.write("duplicate entry");
-        }
-        if (uid.length() > 10 || pass.length() > 20 || name.length() > 50 || name.length() > 50 || email.length() > 20 || phno.length() > 11) {
-            response.sendRedirect("register.jsp?prob=length");
-        }
+         response.sendRedirect("register.jsp?prob=idExist");
+         } else {
+         out.write("duplicate entry");
+         }
+         if (uid.length() > 10 || pass.length() > 20 || name.length() > 50 || name.length() > 50 || email.length() > 20 || phno.length() > 11) {
+         response.sendRedirect("register.jsp?prob=length");
+         }
 
-        if (uid.isEmpty() || pass.isEmpty() || name.isEmpty() || clg.isEmpty() || email.isEmpty() || phno.isEmpty()) {
-            response.sendRedirect("register.jsp?prob=incomplete");
-        }*/
+         if (uid.isEmpty() || pass.isEmpty() || name.isEmpty() || clg.isEmpty() || email.isEmpty() || phno.isEmpty()) {
+         response.sendRedirect("register.jsp?prob=incomplete");
+         }*/
         String plaintext = pass;
         MessageDigest m = MessageDigest.getInstance("MD5");
         m.reset();

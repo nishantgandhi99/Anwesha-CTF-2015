@@ -8,8 +8,6 @@ package CTFCode;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.logging.Formatter;
-import java.util.logging.LogRecord;
 
 /**
  *
@@ -44,7 +42,7 @@ public class Utils {
         return convertToHex(sha1hash);
     }
 
-    public String escapeHtml(String input) {
+    public static String escapeHtml(String input) {
         if (input == null) {
             return null;
         }

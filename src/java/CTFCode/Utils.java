@@ -11,7 +11,7 @@ package CTFCode;
  */
 public class Utils {
 
-    public String escapeHtml(String input) {
+    public static String escapeHtml(String input) {
         if (input == null) {
             return null;
         }

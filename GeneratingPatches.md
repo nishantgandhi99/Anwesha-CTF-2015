@@ -1,4 +1,4 @@
-#Follow these steps to generate a patch that can be merged by committer:
+# Follow these steps to generate a patch that can be merged by committer:
 
 - Check out the Anwesha-CTF source from the git repository.
 
